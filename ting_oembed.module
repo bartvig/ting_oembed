@@ -65,9 +65,19 @@ function ting_oembed_field_formatter_view($entity_type, TingEntity $entity, $fie
       // Get url and if an oembed provider exists, get data and render it.
       $online_url = $entity->getOnline_url();
       if ($provider = oembed_get_provider($online_url, $matches)) {
+        /**
+         * @TODO: This get data checks the "oembed_get_provider" so that call
+         *        is not required above. Also the oembed_get_data calls
+         *        oembed_oembed_fetch which, well, fetches the content? But we
+         *        don't use that content?
+         *
+         *        If this is to check the content is available at the url, there
+         *        may be a better way to do this that don't download content?
+         *        Or am I missing something here!
+         */
         $embed = oembed_get_data($online_url);
         if ($embed) {
-          $element[0] = oembed_render_element('oembed', $online_url, array());
+          $element[0] = oembed_render_element('oembed', $online_url);
         }
       }
       break;
