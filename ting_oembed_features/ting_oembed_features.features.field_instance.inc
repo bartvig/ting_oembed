@@ -62,6 +62,9 @@ function ting_oembed_features_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'ting_object',
+    /**
+     * @TODO: Fields should contain the module name "field_ting_oembed_oembed".
+     */
     'field_name' => 'field_oembed',
     'label' => 'Material content',
     'required' => FALSE,
